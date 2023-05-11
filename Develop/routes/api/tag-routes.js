@@ -5,7 +5,7 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    const getTags = await Tag.findAll();
+    const getTags = await Tag.findAll({include: [{model: Product}],});
     res.status(200).json(getTags);
   } catch(err){
     res.status(500).json(err)
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if(!getTag){
-      res.status(400).json({message: 'No tag found with this ID'});
+      res.status(400).json({message: 'No tag found with that ID.'});
       return;
     }
     res.status(200).json(getTag);
@@ -49,7 +49,7 @@ router.put('/:id', async (req, res) => {
       where: { id: req.params.id},
     });
     if(!updateTag[0]){
-      res.status(400).json({message: 'No tag found with this ID'});
+      res.status(400).json({message: 'No tag found with that ID'});
       return;
     }
     res.status(200).json(updateTag);
@@ -62,7 +62,7 @@ router.delete('/:id', async (req, res) => {
   try{
     const deleteTag = await Tag.destroy({where: {id: req.params.id}});
     if(!deleteTag){
-      res.status(400).json({message: 'No tag found with this ID'});
+      res.status(400).json({message: 'No tag found with that ID'});
       return;
     }
     res.status(200).json(deleteTag);
