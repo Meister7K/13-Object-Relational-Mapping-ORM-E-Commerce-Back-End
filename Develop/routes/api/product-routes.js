@@ -84,7 +84,10 @@ router.put('/:id', (req, res) => {
   })
     .then((product) => {
       // find all associated tags from ProductTag
+      // console.log(req.body.tagIds);
+      // console.log(req.body.tagIds.length);
       return ProductTag.findAll({ where: { product_id: req.params.id } });
+      
     })
     .then((productTags) => {
       // get list of current tag_ids
@@ -111,14 +114,14 @@ router.put('/:id', (req, res) => {
     })
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
       res.status(400).json(err);
     });
 });
 
 router.delete('/:id', async (req, res) => {
 try{
-  const deleteProduct = await product.destroy({where: {id: req.body.id}});
+  const deleteProduct = await Product.destroy({where: {id: req.params.id}});
   if(!deleteProduct){
     res.status(400).json({message: 'Product not found with that ID.'});
   }
