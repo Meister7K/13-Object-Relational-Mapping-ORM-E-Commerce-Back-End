@@ -13,19 +13,19 @@
 - [Cited](#Cited)
 
 ## Description
-- This project was created to develop a CMS (Content Management System)with a CLI (Command Line Interface) program that uses an SQL database to store and retrieve data that a user provides or requests. the theme is a company database that can use the inquirer package to use user input, and then use the sql2 and console.table packages to utilize that input into creating tables and databases for the user to view and edit as needed. 
+- This project was created to develop a back-end database for an e-commerce website that implemented Express, Sequelize, databases, and the CRUD methodology. the goal of this project was to create a backend that reads and responds to GET, POST, PUT and DELETE requests made by the client side of the app. 
 
 ## Installation
-- This project requires the installation of: 
+This project requires the installation of: 
 - node.js v 18
-- inquirer.js  v.8.2.4
-- console.table.js v0.10.0
+- Express.JS
+- Sequelize.js
 - nodemon package is also recommended.
 
 ## Usage
 
 Example GIF
-![Example GIF](./Image/company_db.gif)
+![Example GIF](/assets/ecommerce.gif)
 
 ## License
 - MIT
